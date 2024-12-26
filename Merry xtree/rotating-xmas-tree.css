@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #0a0e13;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+.tree {
+  position: relative;
+  height: 50vmin;
+  width: 25vmin;
+  transform-style: preserve-3d;
+  -webkit-animation: spin 2s infinite linear;
+          animation: spin 2s infinite linear;
+}
+
+.tree__light {
+  transform-style: preserve-3d;
+  position: absolute;
+  height: 1vmin;
+  width: 1vmin;
+  border-radius: 50%;
+  -webkit-animation: flash calc(var(--speed) * 1s)
+                     calc(var(--delay) * 1s)
+                     infinite steps(4),
+                     appear 0.5s calc(var(--appear) * 0.05s)
+                     both;
+          animation: flash calc(var(--speed) * 1s) calc(var(--delay) * 1s)
+                     infinite steps(4), appear 0.5s calc(var(--appear) * 0.05s) both;
+  left: 50%;
+  transform: translate(-50%, 50%) rotateY(calc(var(--rotate, 0) * 1deg))
+                     translate3d(0, 0, calc(var(--radius, 0) * 1vmin));
+  bottom: calc(var(--y, 0) * 1%);
+}
+
+.tree__star {
+  stroke-width: 5vmin;
+  stroke: #f5e0a3;
+  filter: drop-shadow(0 0 2vmin #fcf1cf);
+  height: 5vmin;
+  width: 5vmin;
+  overflow: visible !important;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: absolute;
+  stroke-dasharray: 1000 1000;
+  fill: none;
+  -webkit-animation: stroke 1s calc((var(--delay) * 0.95) * 0.05s) both;
+          animation: stroke 1s calc((var(--delay) * 0.95) * 0.05s) both;
+}
+@-webkit-keyframes stroke {
+  from {
+    stroke-dashoffset: -1000;
+  }
+}
+@keyframes stroke {
+  from {
+    stroke-dashoffset: -1000;
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+@-webkit-keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes flash {
+  0%, 100% {
+    background: #f00;
+  }
+  20% {
+    background: #fff;
+  }
+  40% {
+    background: #f00;
+  }
+  60% {
+    background: #fff;
+  }
+  80% {
+    background: #f00;
+  }
+}
+@keyframes flash {
+  0%, 100% {
+    background: #f00;
+  }
+  20% {
+    background: #fff;
+  }
+  40% {
+    background: #f00;
+  }
+  60% {
+    background: #fff;
+  }
+  80% {
+    background: #f00;
+  }
+}
+
+
+made by DragonSnel

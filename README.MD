@@ -1,0 +1,1 @@
+Simple drawings, both regular and New Year's drawings, are made in "Python" "HTML" "CSS" "JS"

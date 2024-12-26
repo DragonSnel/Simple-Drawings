@@ -1,0 +1,74 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #000;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  aspect-ratio: 1 / 1;
+  cursor: none;
+}
+
+.base-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.final-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  clip-path: circle(0px at var(--x, 0px) var(--y, 0px));
+  will-change: clip-path;
+}
+.container:hover .final-image {
+  clip-path: circle(10% at var(--x, 0px) var(--y, 0px));
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .container:hover .final-image {
+    clip-path: circle(15% at var(--x, 0px) var(--y, 0px));
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .container:hover .final-image {
+    clip-path: circle(20% at var(--x, 0px) var(--y, 0px));
+  }
+}
+
+
+
+made by DragonSnel

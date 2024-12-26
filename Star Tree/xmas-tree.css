@@ -1,0 +1,86 @@
+@charset "UTF-8";
+body, div {
+  display: grid;
+}
+
+body {
+  place-content: center;
+  overflow-x: hidden;
+  margin: 0;
+  height: 100vh;
+  perspective: 35em;
+  background: #000014;
+}
+
+div {
+  transform-style: preserve-3d;
+}
+
+.a3d {
+  --m: calc(.5*(var(--n-stars) - 1));
+  --t: calc(0.33333*var(--n-stars)*0.1s);
+  animation: roty 12s linear var(--t) infinite reverse;
+}
+
+@keyframes roty {
+  to {
+    rotate: y 1turn;
+  }
+}
+.🌟 {
+  --q: Min(1, var(--j));
+  --p: calc(1 - var(--q));
+  --s: calc((1.25*var(--p) + var(--q)*var(--sf))*2em);
+  --ay0: calc(var(--i)/var(--n-arms)*1turn);
+  --ay1: calc(var(--ay0) - var(--n-loops)*1turn);
+  --ay: calc((var(--j)/var(--n-stars)*var(--n-loops) + var(--i)/var(--n-arms))*1turn);
+  --tx: calc(var(--q)*var(--rox)*2em);
+  --ty0: calc(var(--m)/var(--n-stars)*20em);
+  --ty1: calc(-1*var(--ty0) - 0.75*2em);
+  --ty: calc((var(--j) - var(--m))/var(--n-stars)*20em + (var(--q)*var(--roy) - var(--p)*0.75)*2em);
+  --tz: calc(var(--j)/var(--n-stars)*10em + var(--q)*var(--roz)*2em);
+  grid-area: 1/ 1;
+  width: var(--s);
+  height: var(--s);
+  --pos: rotatey(var(--ay)) translate3d(var(--tx), var(--ty), var(--tz)) rotatey(calc(-1*var(--ay)));
+  transform: var(--pos);
+  --dt: calc(0.33333*(var(--n-stars) - var(--j))*0.1s);
+  animation: grow calc(var(--q)*0.1s) ease-out var(--dt) backwards, move calc(var(--p)*var(--t)) linear;
+}
+.🌟::after {
+  opacity: calc(var(--p) + var(--q)*var(--j)/var(--n-stars) + .25);
+  background: radial-gradient(#fffacd 10%, rgba(255, 250, 205, 0.2));
+  --points: 50% 0%, 53.53553% 41.46447%, 85.35534% 14.64466%, 58.53553% 46.46447%, 100% 50%, 58.53553% 53.53553%, 85.35534% 85.35534%, 53.53553% 58.53553%, 50% 100%, 46.46447% 58.53553%, 14.64466% 85.35534%, 41.46447% 53.53553%, 0% 50%, 41.46447% 46.46447%, 14.64466% 14.64466%, 46.46447% 41.46447%;
+  -webkit-clip-path: polygon(var(--points));
+  clip-path: polygon(var(--points));
+  animation: roty 12s linear var(--t) infinite, puls calc(var(--p)*.1s) ease-in-out infinite alternate, hue 4s linear var(--dt) infinite;
+  content: "";
+}
+
+@keyframes grow {
+  0% {
+    transform: var(--pos) scale(0);
+  }
+}
+@keyframes move {
+  0% {
+    transform: rotatey(var(--ay0)) translate3d(0, var(--ty0), 10em) rotatey(calc(-1*var(--ay0)));
+  }
+  100% {
+    transform: rotatey(var(--ay1)) translate3d(0, var(--ty1), 0) rotatey(calc(-1*var(--ay1)));
+  }
+}
+@keyframes puls {
+  to {
+    scale: .2;
+    opacity: 0.2;
+  }
+}
+@keyframes hue {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+
+made by DragonSnel
